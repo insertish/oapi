@@ -1,6 +1,6 @@
 {
   "name": "@insertish/oapi",
-  "version": "0.1.10",
+  "version": "0.1.12",
   "description": "API Library Generator for OpenAPI",
   "main": "dist/index.js",
   "repository": "https://github.com/insertish/oapi",

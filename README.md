@@ -2,6 +2,8 @@
 
 This is a CLI for auto-generating an API library for a given OpenAPI spec which uses JSON primarily and conforms to Revolt's API style.
 
+Thank you to [bree](https://bree.dev/) for helping me figure out all the especially difficult types.
+
 ## Goals
 
 - Commit programming atrocities internally.
@@ -26,6 +28,26 @@ new API()
         return user.username;
     })
     .then(console.log);
+```
+
+Conflict resolution is also automatic, so conflicting prefixes will not cause issues:
+
+```typescript
+import { API } from 'your-api';
+
+// For a route /some/{string}:
+new API()
+    .get('/some/this is an example')
+    .then(x => {
+        x // number
+    })
+
+// For a route /some/{string}/conflicting:
+new API()
+    .get('/some/this is an example/conflicting')
+    .then(x => {
+        x // string
+    })
 ```
 
 You can also provide your query and body parameters at the same time:
@@ -106,26 +128,6 @@ Now generate the library: (`src` folder will be overwritten!)
 
 ```sh
 yarn build
-```
-
-## Strict Mode
-
-If your API provides similar routes, you may want to enable strict mode on to prevent unknown union types from forming.
-
-```sh
-STRICT=1 oapilib
-```
-
-This will use the exact path segment name instead of template matching:
-
-```typescript
-// Without strict mode:
-type Path = `/users/${string}`;
-type PathConflicting = `/users/${string}/friend`;
-
-// With strict mode:
-type Path = `/users/target`;
-type PathNotConflicting = `/users/target/friend`;
 ```
 
 ## Replace `anyOf` with `oneOf`

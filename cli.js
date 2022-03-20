@@ -38,10 +38,7 @@ readFile('OpenAPI.json')
                 const data = spec.paths[path];
                 const methods = Object.keys(data);
 
-                let template = path;
-                if (!process.env.STRICT) {
-                    template = path.replace(/\{\w+\}/g, '${string}');
-                }
+                let template = path.replace(/\{\w+\}/g, '${string}');
 
                 for (const method of methods) {
                     const OPERATION = `paths['${path}']['${method}']`;
@@ -81,8 +78,12 @@ readFile('OpenAPI.json')
                         params = entries.join('|');
                     }
 
-                    const object = `{ method: '${method}', path: \`${template}\`, params: ${params}, response: ${RESPONSE} }`;
-                    entries.push(`| ${object}`);
+                    const parts = path.split('').filter(x => x === '/').length;
+                    entries.push(`| { method: '${method}', path: \`${template}\`, parts: ${parts}, params: ${params}, response: ${RESPONSE} }`);
+
+                    if (/\{\w+\}/.test(path)) {
+                        entries.push(`| { method: '${method}', path: '-${path}', parts: ${parts}, params: ${params}, response: ${RESPONSE} }`);
+                    }
 
                     queryData[path] = {
                         ...queryData[path],
