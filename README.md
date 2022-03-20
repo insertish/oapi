@@ -80,6 +80,8 @@ Update your `package.json` to include the following:
 }
 ```
 
+**Note**: you may want to use `opailib strict`, see "Strict Mode" below.
+
 Setup Typescript:
 
 ```sh
@@ -104,4 +106,24 @@ Now generate the library: (`src` folder will be overwritten!)
 
 ```sh
 yarn build
+```
+
+## Strict Mode
+
+If your API provides similar routes, you may want to enable strict mode on to prevent unknown union types from forming.
+
+```sh
+oapilib strict
+```
+
+This will use the exact path segment name instead of template matching:
+
+```typescript
+// Without strict mode:
+type Path = `/users/${string}`;
+type PathConflicting = `/users/${string}/friend`;
+
+// With strict mode:
+type Path = `/users/target`;
+type PathNotConflicting = `/users/target/friend`;
 ```

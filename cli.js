@@ -30,7 +30,10 @@ readFile('OpenAPI.json')
                 const data = spec.paths[path];
                 const methods = Object.keys(data);
 
-                const template = path.replace(/\{\w+\}/g, '${string}');
+                let template = path;
+                if (process.argv.pop() !== 'strict') {
+                    template = path.replace(/\{\w+\}/g, '${string}');
+                }
 
                 for (const method of methods) {
                     const OPERATION = `paths['${path}']['${method}']`;
