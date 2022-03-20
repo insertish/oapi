@@ -57,29 +57,50 @@ new API({
 })
 ```
 
-## Usage
+## Setup Guide
 
-Add package locally:
+Create a new project and configure it:
 
 ```sh
-yarn add --dev @insertish/oapi
+yarn init
+yarn add @insertish/oapi axios
+yarn add --dev typescript openapi-typescript
 ```
 
 Place your OpenAPI specification at the root of your API library at `OpenAPI.json`.
 
-Update your `package.json` to include a new script:
+Update your `package.json` to include the following:
 
 ```json
 {
+    [...],
     "scripts": {
-        "generate": "oapilib"
-    },
-    ...
+        "build": "oapilib && tsc"
+    }
 }
 ```
+
+Setup Typescript:
+
+```sh
+yarn exec tsc -- --init
+```
+
+Change `tsconfig.json` to include:
+
+```json
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": "./src"
+    }
+}
+```
+
+Create a new `src` directory.
 
 Now generate the library: (`src` folder will be overwritten!)
 
 ```sh
-yarn generate
+yarn build
 ```
