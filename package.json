@@ -1,6 +1,6 @@
 {
   "name": "@insertish/oapi",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "API Library Generator for OpenAPI",
   "main": "dist/index.js",
   "repository": "https://github.com/insertish/oapi",
@@ -12,10 +12,11 @@
   "bin": {
     "oapilib": "./cli.js"
   },
-  "devDependencies": {
+  "optionalDependencies": {
+    "axios": "^0.26.1",
     "openapi-typescript": "^5.2.0"
   },
-  "optionalDependencies": {
-    "axios": "^0.26.1"
+  "devDependencies": {
+    "@types/lodash.defaultsdeep": "^4.6.6"
   }
 }

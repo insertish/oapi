@@ -2,6 +2,8 @@
 import Axios from 'axios';
 import type { AxiosRequestConfig } from 'axios';
 
+import defaultsDeep from 'lodash.defaultsdeep';
+
 export * from './types';
 import type { APIRoutes } from './routes';
 
@@ -147,13 +149,14 @@ export class API {
             }
         }
 
-        return Axios(path, {
-            ...this.config,
-            ...config,
+        return Axios(path, defaultsDeep({
             method,
             params: query,
             data: body
-        })
+        }, defaultsDeep(
+            config,
+            this.config
+        )))
         .then(res => res.data);
     }
 

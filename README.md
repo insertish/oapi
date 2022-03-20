@@ -63,8 +63,8 @@ Create a new project and configure it:
 
 ```sh
 yarn init
-yarn add @insertish/oapi axios
-yarn add --dev typescript openapi-typescript
+yarn add @insertish/oapi axios lodash.defaultsdeep
+yarn add --dev typescript openapi-typescript @types/lodash.defaultsdeep
 ```
 
 Place your OpenAPI specification at the root of your API library at `OpenAPI.json`.
