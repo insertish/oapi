@@ -92,7 +92,8 @@ Change `tsconfig.json` to include:
 {
     "compilerOptions": {
         "outDir": "./dist",
-        "rootDir": "./src"
+        "rootDir": "./src",
+        "declaration": true
     }
 }
 ```
