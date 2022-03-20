@@ -180,6 +180,7 @@ export class API {
     get<Path extends (GetRoutes & { params: undefined })['path'], Route extends GetRoutes & { path: Path, parts: Count<Path, '/'> }>(path: Path): Promise<Route['response']>;
 
     get(path: any, params?: any, config?: AxiosRequestConfig): Promise<any> {
+        // @ts-ignore-next-line
         return this.req('get', path, params, config);
     }
 
@@ -200,6 +201,7 @@ export class API {
     patch<Path extends (PatchRoutes & { params: undefined })['path'], Route extends PatchRoutes & { path: Path, parts: Count<Path, '/'> }>(path: Path): Promise<Route['response']>;
 
     patch(path: any, params?: any, config?: AxiosRequestConfig): Promise<any> {
+        // @ts-ignore-next-line
         return this.req('patch', path, params, config);
     }
 
@@ -220,6 +222,7 @@ export class API {
     put<Path extends (PutRoutes & { params: undefined })['path'], Route extends PutRoutes & { path: Path, parts: Count<Path, '/'> }>(path: Path): Promise<Route['response']>;
 
     put(path: any, params?: any, config?: AxiosRequestConfig): Promise<any> {
+        // @ts-ignore-next-line
         return this.req('put', path, params, config);
     }
 
@@ -240,6 +243,7 @@ export class API {
     delete<Path extends (DeleteRoutes & { params: undefined })['path'], Route extends DeleteRoutes & { path: Path, parts: Count<Path, '/'> }>(path: Path): Promise<Route['response']>;
 
     delete(path: any, config?: AxiosRequestConfig): Promise<any> {
+        // @ts-ignore-next-line
         return this.req('delete', path, undefined, config);
     }
 
@@ -260,6 +264,7 @@ export class API {
     post<Path extends (PostRoutes & { params: undefined })['path'], Route extends PostRoutes & { path: Path, parts: Count<Path, '/'> }>(path: Path): Promise<Route['response']>;
 
     post(path: any, params?: any, config?: AxiosRequestConfig): Promise<any> {
+        // @ts-ignore-next-line
         return this.req('post', path, params, config);
     }
 }
