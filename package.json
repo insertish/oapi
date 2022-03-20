@@ -1,0 +1,21 @@
+{
+  "name": "@insertish/oapi",
+  "version": "0.1.5",
+  "description": "API Library Generator for OpenAPI",
+  "main": "dist/index.js",
+  "repository": "https://github.com/insertish/oapi",
+  "author": "Paul Makles <insrt.uk>",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.6.2"
+  },
+  "bin": {
+    "oapilib": "./cli.js"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^5.2.0"
+  },
+  "optionalDependencies": {
+    "axios": "^0.26.1"
+  }
+}
