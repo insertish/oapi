@@ -31,7 +31,7 @@ readFile('OpenAPI.json')
                 const methods = Object.keys(data);
 
                 let template = path;
-                if (process.argv.pop() !== 'strict') {
+                if (!process.env.STRICT) {
                     template = path.replace(/\{\w+\}/g, '${string}');
                 }
 

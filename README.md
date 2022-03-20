@@ -80,7 +80,7 @@ Update your `package.json` to include the following:
 }
 ```
 
-**Note**: you may want to use `opailib strict`, see "Strict Mode" below.
+**Note**: you may want to use `STRICT=1 opailib`, see "Strict Mode" below.
 
 Setup Typescript:
 
@@ -113,7 +113,7 @@ yarn build
 If your API provides similar routes, you may want to enable strict mode on to prevent unknown union types from forming.
 
 ```sh
-oapilib strict
+STRICT=1 oapilib
 ```
 
 This will use the exact path segment name instead of template matching:
