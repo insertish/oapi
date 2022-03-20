@@ -127,3 +127,13 @@ type PathConflicting = `/users/${string}/friend`;
 type Path = `/users/target`;
 type PathNotConflicting = `/users/target/friend`;
 ```
+
+## Replace `anyOf` with `oneOf`
+
+If your spec uses `anyOf`, the values are mapped as an intersection while you may actually want all of these values to be treated as if they were `oneOf`, or otherwise a union.
+
+You can specify the environment variable `REWRITE_ANYOF` to any truthy value.
+
+```sh
+REWRITE_ANYOF=1 oapilib
+```
