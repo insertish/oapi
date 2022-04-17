@@ -114,7 +114,7 @@ readFile('OpenAPI.json')
             const schemas = spec.components.schemas;
 
             for (const schema of Object.keys(schemas)) {
-                entries.push(`export type ${schema} = components['schemas']['${schema}'];`);
+                entries.push(`export type ${schema.replace(/\s/g, '_')} = components['schemas']['${schema}'];`);
             }
 
             writeFile('src/types.ts', NOTICE + entries.join('\n') + ";");
