@@ -44,8 +44,8 @@ readFile('OpenAPI.json')
                     const OPERATION = `paths['${path}']['${method}']`;
 
                     const route = data[method];
-                    const response = Object.keys(route['responses']).find(x => x !== 'default') ?? 'default';
-                    const contentType = Object.keys(route['responses'][response]['content'] ?? {})[0];
+                    const response = Object.keys(route['responses']).find(x => x !== 'default') || 'default';
+                    const contentType = Object.keys(route['responses'][response]['content'] || {})[0];
                     const RESPONSE = response === '204' || !contentType ? 'undefined' : `${OPERATION}['responses']['${response}']['content']['${contentType}']`;
 
                     let queryParams = [];
@@ -97,7 +97,7 @@ readFile('OpenAPI.json')
                 const segments = path.split('/');
                 segments.shift();
                 pathResolve[segments.length] = [
-                    ...(pathResolve[segments.length] ?? []),
+                    ...(pathResolve[segments.length] || []),
                     segments.map(key => /\{.*\}/.test(key) ? [key] : key)
                 ];
             }
