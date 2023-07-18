@@ -60,6 +60,7 @@ export function getPathName(anyPath: string) {
     authentication: {
         rauth?: string | undefined;
         revolt?: { token: string } | string | undefined;
+        headers?: AxiosRequestConfig['headers'] | undefined;
     };
 }
 
@@ -104,6 +105,8 @@ export class API {
                     }
                 }
             }
+        } else if (this.authentication.headers) {
+            return { headers: this.authentication.headers };
         }
 
         return { };
