@@ -63,6 +63,7 @@ export interface Options {
   authentication: {
     rauth?: string | undefined;
     revolt?: { token: string } | string | undefined;
+    headers?: Record<string, any>;
   };
 }
 
@@ -91,7 +92,7 @@ export class API {
   private baseURL: Options["baseURL"];
   private authentication: Options["authentication"];
 
-  constructor({ baseURL, authentication }: Partial<Options> = {}) {
+constructor({ baseURL, authentication }: Partial<Options> = {}) {
     this.baseURL = baseURL || defaultBaseURL;
     this.authentication = authentication || {};
   }
@@ -125,6 +126,8 @@ export class API {
           };
         }
       }
+    } else if (this.authentication.headers) {
+      return { headers: this.authentication.headers };
     }
 
     return {};
@@ -190,7 +193,7 @@ export class API {
         method,
         headers: {
           ...(config?.headers || {}),
-          ...this.config.headers,
+          ...(this.config.headers || {}),
         } as HeadersInit,
         body: passbody,
       }
