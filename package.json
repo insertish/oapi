@@ -13,10 +13,6 @@
     "oapilib": "./cli.js"
   },
   "optionalDependencies": {
-    "axios": "^0.26.1",
     "openapi-typescript": "^5.2.0"
-  },
-  "devDependencies": {
-    "@types/lodash.defaultsdeep": "^4.6.6"
   }
 }

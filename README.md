@@ -15,55 +15,50 @@ Thank you to [bree](https://bree.dev/) for helping me figure out all the especia
 Here's what you can achieve with this library:
 
 ```typescript
-import { API } from 'your-api';
+import { API } from "your-api";
 
-let id = 'user_id';
+let id = "user_id";
 
 // By default, we use the first server specified in the API spec.
 new API()
-    // Path parameters are specified using template strings.
-    .get(`/users/${id}`)
-    .then(user => {
-        // User is still fully typed!
-        return user.username;
-    })
-    .then(console.log);
+	// Path parameters are specified using template strings.
+	.get(`/users/${id}`)
+	.then((user) => {
+		// User is still fully typed!
+		return user.username;
+	})
+	.then(console.log);
 ```
 
 Conflict resolution is also automatic, so conflicting prefixes will not cause issues:
 
 ```typescript
-import { API } from 'your-api';
+import { API } from "your-api";
 
 // For a route /some/{string}:
-new API()
-    .get('/some/this is an example')
-    .then(x => {
-        x // number
-    })
+new API().get("/some/this is an example").then((x) => {
+	x; // number
+});
 
 // For a route /some/{string}/conflicting:
-new API()
-    .get('/some/this is an example/conflicting')
-    .then(x => {
-        x // string
-    })
+new API().get("/some/this is an example/conflicting").then((x) => {
+	x; // string
+});
 ```
 
 You can also provide your query and body parameters at the same time:
 
 ```typescript
-import { API } from 'your-api';
+import { API } from "your-api";
 
 // PATCH /users/@me?preserve=true
 // Body: { username: string }
-new API()
-    .patch(`/users/@me`, {
-        // Specify query parameters
-        preserve: true,
-        // Or body parameters
-        username: 'something'
-    });
+new API().patch(`/users/@me`, {
+	// Specify query parameters
+	preserve: true,
+	// Or body parameters
+	username: "something",
+});
 ```
 
 This removes the overhead of having to remember exactly what goes where and provides a much nicer (and still strongly typed) API experience.
@@ -72,11 +67,11 @@ Currently this only supports rauth and Revolt authentication, but you can still 
 
 ```typescript
 new API({
-    baseURL: 'https://example.com',
-    authentication: {
-        rauth: 'session token'
-    }
-})
+	baseURL: "https://example.com",
+	authentication: {
+		rauth: "session token",
+	},
+});
 ```
 
 ## Setup Guide
@@ -114,11 +109,11 @@ Change `tsconfig.json` to include:
 
 ```json
 {
-    "compilerOptions": {
-        "outDir": "./dist",
-        "rootDir": "./src",
-        "declaration": true
-    }
+	"compilerOptions": {
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"declaration": true
+	}
 }
 ```
 
