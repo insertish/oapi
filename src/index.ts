@@ -58,6 +58,10 @@ export interface Options {
    */
   baseURL: string;
   /**
+   * Additional headers to apply to requests
+   */
+  headers?: Record<string, any>;
+  /**
    * Authentication used for requests
    */
   authentication: {
@@ -91,10 +95,12 @@ export interface RequestOptions {
 export class API {
   private baseURL: Options["baseURL"];
   private authentication: Options["authentication"];
+  private headers: Options["headers"];
 
-constructor({ baseURL, authentication }: Partial<Options> = {}) {
+  constructor({ baseURL, authentication, headers }: Partial<Options> = {}) {
     this.baseURL = baseURL || defaultBaseURL;
     this.authentication = authentication || {};
+    this.headers = headers || {};
   }
 
   /**
@@ -140,6 +146,7 @@ constructor({ baseURL, authentication }: Partial<Options> = {}) {
     return {
       baseURL: this.baseURL,
       ...this.auth,
+      headers: this.headers,
     };
   }
 
