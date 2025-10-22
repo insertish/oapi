@@ -24,6 +24,11 @@ js-yaml@^4.1.0:
   dependencies:
     argparse "^2.0.1"
 
+json-with-bigint@^3.4.4:
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/json-with-bigint/-/json-with-bigint-3.4.4.tgz#ef798afee4c4203feffa44f5238cd77c93e8f72a"
+  integrity sha512-AhpYAAaZsPjU7smaBomDt1SOQshi9rEm6BlTbfVwsG1vNmeHKtEedJi62sHZzJTyKNtwzmNnrsd55kjwJ7054A==
+
 mime@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/mime/-/mime-3.0.0.tgz#b374550dca3a0c18443b0c950a6a58f1931cf7a7"
